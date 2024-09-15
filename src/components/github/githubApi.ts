@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 //TODO: My access token -> to use for accessing githubApi
-const TOKEN = process.env.GITHUB_TOKEN  || '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';
+const TOKEN = process.env.GITHUB_TOKEN  || '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';
 const query = `
 query($userName:String!) {
   user(login: $userName) {
