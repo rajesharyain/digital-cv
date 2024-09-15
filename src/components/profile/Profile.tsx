@@ -134,12 +134,12 @@ const Profile: React.FC<ProfileProps> = ({ name, avatarUrl, githubAvatarUrl, git
                         <HighlightedSkillsSection />
                     </div>
 
-                    <div className={classes.section}>
+                    {/* <div className={classes.section}>
                         <Typography variant="button" className={classes.sectionTitle}>Github Activity</Typography>
                         <div className={classes.currentActivityBackground}>
                             <ReactChart userName={userName} />
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className={classes.section}>
                         <Typography variant="button" className={classes.sectionTitle}>Organizations, I Worked With</Typography>
