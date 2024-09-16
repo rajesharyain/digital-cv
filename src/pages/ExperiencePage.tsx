@@ -92,7 +92,7 @@ const useStyles = makeStyles((theme) => ({
 const experiences = [
     {
         companyName: 'Aubay | Critical TechWorks.',
-        duration: '01/2024 - Present',
+        duration: '01/24 - Present',
         entitle: 'Senior Consultant',
         location: 'Lisbon, Portugal',
         clientLogo: 'company/ctw_logo.svg',
@@ -130,7 +130,7 @@ const experiences = [
     },
     {
         companyName: 'Citicorp Services Private Ltd.',
-        duration: '10/2019 - 01/2024',
+        duration: '10/19 - 01/24',
         entitle: 'Java Fullstack developer',
         location: 'Pune, India',
         clientLogo: '',
@@ -152,7 +152,7 @@ const experiences = [
     },
     {
         companyName: 'Mphasis',
-        duration: '10/2018 - 10/2019',
+        duration: '10/18 - 10/19',
         entitle: 'Module Lead',
         location: 'Pune, India',
         clientLogo: 'company/bny_logo.svg',
@@ -172,7 +172,7 @@ const experiences = [
     },
     {
         companyName: 'Accenture, India',
-        duration: '01/2014 - 10/2018',
+        duration: '01/14 - 10/18',
         entitle: 'Team Lead',
         location: 'Pune, India',
         clientLogo: '',
@@ -201,7 +201,7 @@ const experiences = [
     },
     {
         companyName: 'Entrata',
-        duration: '07/2012 - 01/2014',
+        duration: '07/12 - 01/14',
         entitle: 'Software Engineer',
         location: 'Pune, India',
         clientLogo: '',
@@ -219,7 +219,7 @@ const experiences = [
     },
     {
         companyName: 'Smartdata Enterprises',
-        duration: '06/2011 - 07/2012',
+        duration: '06/11 - 07/12',
         entitle: 'Software Engineer',
         location: 'Nagpur, India',
         clientLogo: '',
