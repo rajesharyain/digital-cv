@@ -32,7 +32,7 @@ const Achievements: React.FC = () => {
       </Typography>
 
       <Grid item xs={12}>
-  <Card className={classes.card}>
+  <Card className={classes.card} >
     <CardContent>
       <Typography variant="h6" className={classes.bold}>
         ACE Award

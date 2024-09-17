@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, Paper, Typography, Avatar as MuiAvatar, withStyles, Button } from '@material-ui/core';
+import { makeStyles, Paper, Typography, Avatar as MuiAvatar, withStyles, Button, useMediaQuery, useTheme } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
 // Use the same experiences data from your main component
@@ -45,7 +45,7 @@ const currentExperience = {
 const useStyles = makeStyles((theme) => ({
   paper: {
    /*  padding: '16px', */
-   marginTop: theme.spacing(2),
+   /*  marginTop: theme.spacing(2), */
     marginBottom: theme.spacing(2),
     position: 'relative',
   
@@ -78,6 +78,9 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(2),
     textAlign: 'center',
   },
+  currentActivity:{
+    lineHeight: '2.5rem'
+  },
 }));
 
 const CustomAvatar = withStyles({
@@ -91,12 +94,13 @@ const CustomAvatar = withStyles({
 
 export default function CurrentActivity() {
   const classes = useStyles();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
    <div className={classes.paper}>
       {/* Display the company and client logos */}
-      {currentExperience.clientLogo && (
-       
+      {!isMobile && currentExperience.clientLogo && (
         <img
           src={currentExperience.clientLogo}
           alt={`${currentExperience.companyName} client logo`}
@@ -132,7 +136,7 @@ export default function CurrentActivity() {
           <Typography variant="subtitle1">
             {project.title} - {project.role}
           </Typography>
-          <ul>
+          <ul className={classes.currentActivity}>
             {project.details.map((detail, detailIndex) => (
               <li key={detailIndex}>
                 <Typography variant="body2">{detail}</Typography>
@@ -141,16 +145,17 @@ export default function CurrentActivity() {
           </ul>
         </div>
       ))}
-         <div className={classes.viewAllButton}>
+      {/* <div className={classes.viewAllButton}>
         <Button
           variant="contained"
           color="primary"
           component={Link} 
-          to="/experience" // Assuming you have a route for the experience page
+          to="/experience"
         >
           View All
         </Button>
-      </div>
+      </div> */}
     </div>
   );
 }
+

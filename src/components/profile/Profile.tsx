@@ -1,6 +1,6 @@
 // src/components/Profile.tsx
 import React from 'react';
-import { Card, CardContent, Typography, Link, Grid, Avatar, Divider } from '@material-ui/core';
+import { Card, CardContent, Typography, Grid, Avatar, Divider, Button } from '@material-ui/core';
 import { GitHub, LinkedIn, Email, Phone } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
 import Achievements from './Achievements';
@@ -14,6 +14,7 @@ import HighlightedSkillsSection from '../../pages/HighlightedSkillsSection';
 import VictoryChartPage from '../../pages/VictoryChartPage';
 import Organizations from './Organizations';
 import CurrentActivity from '../../pages/CurrentActivity';
+import { Link } from 'react-router-dom';
 
 interface ProfileProps {
     name: string;
@@ -55,6 +56,12 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'row',
         padding: theme.spacing(2),
     },
+    container: {
+        display: 'flex',
+        justifyContent: 'space-between',  // Distribute items to opposite ends
+        alignItems: 'center',             // Align vertically in the middle
+        marginBottom: theme.spacing(2),   // Add some spacing below the section
+      },
     /* leftColumn: {
         flex: 1,
         marginRight: theme.spacing(2),
@@ -77,9 +84,10 @@ const useStyles = makeStyles((theme) => ({
        
     },
     currentActivityBackground:{
-        marginTop: theme.spacing(2),
-        background:theme.palette.grey[100],
-        padding:10,
+        marginTop: theme.spacing(1),
+        background: '#F5F7F8',
+        /* background:theme.palette.grey[100], */
+        padding:15,
     },
     sectionTitle:{
         textTransform:'uppercase',
@@ -92,7 +100,7 @@ const Profile: React.FC<ProfileProps> = ({ name, avatarUrl, githubAvatarUrl, git
     const profileAvatarUrl = githubAvatarUrl || avatarUrl || 'https://via.placeholder.com/150';
     const userName = 'rajesharyain';
     return (
-        <Card className={classes.root}>
+        <Card className={classes.root} elevation={0}>
             {/* <div className={classes.leftColumn}>
                 <Avatar src={profileAvatarUrl} alt={name} className={classes.avatar} />
                 <Typography variant="h5" gutterBottom>{name}</Typography>
@@ -122,24 +130,46 @@ const Profile: React.FC<ProfileProps> = ({ name, avatarUrl, githubAvatarUrl, git
 
                    {/*  <Divider orientation="horizontal"/> */}
                    <div className={classes.section}>
+                   <div className={classes.container}>
                     <Typography variant="button" className={classes.sectionTitle}>Current Organazation</Typography>
+                    <Button
+                        variant="outlined"
+                        color="primary"
+                        component={Link} 
+                        to="/experience"
+                        size="small"
+                        >
+                        View All
+                        </Button>
+                        </div>
                         <div className={classes.currentActivityBackground}>
                             <CurrentActivity/>
                         </div>
                     </div>
                    
                     <div className={classes.section}>
+                    <div className={classes.container}>
                         <Typography variant="button" className={classes.sectionTitle}>Skills</Typography>
+                        <Button
+                            variant="outlined"
+                            color="primary"
+                            component={Link} 
+                            to="/skills"
+                            size="small"
+                            >
+                                View All
+                            </Button>
+                        </div>
                         <Typography variant='body2' >Currently focused on the highlighted skills.</Typography>
                         <HighlightedSkillsSection />
                     </div>
 
-                    {/* <div className={classes.section}>
+                    <div className={classes.section}>
                         <Typography variant="button" className={classes.sectionTitle}>Github Activity</Typography>
                         <div className={classes.currentActivityBackground}>
                             <ReactChart userName={userName} />
                         </div>
-                    </div> */}
+                    </div>
 
                     <div className={classes.section}>
                         <Typography variant="button" className={classes.sectionTitle}>Organizations, I Worked With</Typography>
@@ -148,7 +178,7 @@ const Profile: React.FC<ProfileProps> = ({ name, avatarUrl, githubAvatarUrl, git
                         />
                     </div>
                     
-                    {/*  <Chart userName={userName} /> */}
+                     {/* <Chart userName={userName} /> */}
                     
                    
 

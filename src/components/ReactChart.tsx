@@ -25,39 +25,43 @@ const ReactChart: React.FC<ChartProps> = ({ userName }) => {
 
   useEffect(() => {
     async function fetchData() {
-      const data = await retrieveContributionData(userName);
-      const weeks = data.data.user.contributionsCollection.contributionCalendar.weeks;
-      const labels = weeks.flatMap(week => week.contributionDays.map(day => day.date));
-      const contributions = weeks.flatMap(week => week.contributionDays.map(day => day.contributionCount));
+      try{
+        const data = await retrieveContributionData(userName);
+        const weeks = data.data.user.contributionsCollection.contributionCalendar.weeks;
+        const labels = weeks.flatMap(week => week.contributionDays.map(day => day.date));
+        const contributions = weeks.flatMap(week => week.contributionDays.map(day => day.contributionCount));
       
-      setChartData({
-        labels,
-        datasets: [
-          {
-            label: 'Contributions',
-            data: contributions,
-            fill: false,
-            backgroundColor: 'rgba(75,192,192,0.6)',
-            borderColor: 'rgba(75,192,192,1)',
-            borderWidth: 1,
-          },
-        ],
-      });
+        setChartData({
+          labels,
+          datasets: [
+            {
+              label: 'Contributions',
+              data: contributions,
+              fill: false,
+              backgroundColor: 'rgba(75,192,192,0.6)',
+              borderColor: 'rgba(75,192,192,1)',
+              borderWidth: 1,
+            },
+          ],
+        });
 
-      setBarChartData({
-        type:"bar",
-        labels,
-        datasets: [
-          {
-            label: 'Contributions',
-            data: contributions,
-            fill: false,
-            backgroundColor: 'rgba(75,192,192,0.6)',
-            borderColor: 'rgba(75,192,192,1)',
-            borderWidth: 1,
-          },
-        ],
-      });
+        setBarChartData({
+          type:"bar",
+          labels,
+          datasets: [
+            {
+              label: 'Contributions',
+              data: contributions,
+              fill: false,
+              backgroundColor: 'rgba(75,192,192,0.6)',
+              borderColor: 'rgba(75,192,192,1)',
+              borderWidth: 1,
+            },
+          ],
+        });
+      }catch(e){
+        console.log("Error fetching data")
+      }
     }
 
     fetchData();

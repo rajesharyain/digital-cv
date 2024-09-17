@@ -60,7 +60,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ videoUrl }) => {
 
     return (
         <div>
-            <Card className={classes.section}>
+            <Card className={classes.section} elevation={0}>
                 <CardContent>
                     <Typography variant="caption" component="h1">Hi, I'm Rajesh. Let me introduce myself...</Typography>
                         <VideoProfile videoUrl={videoUrl} />
@@ -68,7 +68,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ videoUrl }) => {
                 </CardContent>
             </Card>
           
-            <Card className={classes.section}>
+            <Card className={classes.section} elevation={0}>
                 <CardContent>
                 <Typography variant="overline" component="h1">Industry Domains</Typography>
                     <ul className={classes.listStyle}>
@@ -87,7 +87,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ videoUrl }) => {
             </Card>
 
 
-            <Card className={classes.section}>
+            <Card className={classes.section} elevation={0}>
                 <CardContent>
                 <Typography variant="overline" component="h1">Education</Typography>
                     <div>

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 //TODO: My access token -> to use for accessing githubApi
-const TOKEN = process.env.GITHUB_TOKEN;
+const GITHUB_STRING = process.env.GITHUB_STRING;
 const query = `
 query($userName:String!) {
   user(login: $userName) {
@@ -33,7 +33,7 @@ export async function retrieveContributionData(userName: string): Promise<Extern
   try {
     const response = await axios.post('https://api.github.com/graphql', body, {
       headers: {
-        Authorization: `Bearer ${TOKEN}`,
+        Authorization: `Bearer ${GITHUB_STRING}`,
         'Content-Type': 'application/json',
       },
     });

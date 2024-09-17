@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { AppBar, Toolbar, Typography, Button, makeStyles, useMediaQuery, useTheme, ListItem, ListItemText, Drawer, IconButton, List } from '@material-ui/core';
 import { Menu as MenuIcon } from '@material-ui/icons';
-import { Link } from 'react-router-dom';
+import { Link, useLocation , NavLink  } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
         marginRight: theme.spacing(2),
     },
     link: {
+     
       color: theme.palette.primary.contrastText,
       textDecoration: 'none',
       '&:hover': {
@@ -22,22 +23,34 @@ const useStyles = makeStyles((theme) => ({
       },
     },
     list: {
+      display: 'grid',
+      rowGap:'10px',
+      justifyItems:'baseline',
       padding: theme.spacing(2),
       marginBottom: theme.spacing(2),
-     
     },
     listItem: {
       borderBottom: `1px solid ${theme.palette.divider}`,
     },
     drawerColor:{
        backgroundColor: theme.palette.primary.dark,
-    }
+    },
+    activeLink: {
+      fontWeight: 'bold', // Highlight active item
+    },
+    listItemText: {
+      color: 'inherit',
+      textTransform: 'inherit'
+    },
+  
 
 }));
 
 const Menu: React.FC = () => {
     const classes = useStyles();
     const theme = useTheme();
+    const location = useLocation();
+
     const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // Detects if the screen width is small (like mobile)
     const [drawerOpen, setDrawerOpen] = useState(false);
   
@@ -53,22 +66,26 @@ const Menu: React.FC = () => {
       const menuItems = (
         <>
           <Button color="inherit">
-            <Link to="/" className={classes.link}>Profile</Link>
+            <NavLink to="/"  className={({ isActive }) => `${classes.link} ${isActive ? classes.activeLink : ''}`}>
+
+              Profile
+           </NavLink>
+            {/* <NavLink to="/" className={({ isActive }) => `${classes.link} ${isActive ? classes.activeLink : ''}`}>Profile</NavLink> */}
           </Button>
           <Button color="inherit">
-            <Link to="/experience" className={classes.link}>Experience</Link>
+            <NavLink to="/experience" className={({ isActive }) => `${classes.link} ${isActive ? classes.activeLink : ''}`}>Experience</NavLink>
           </Button>
           <Button color="inherit">
-            <Link to="/skills" className={classes.link}>Skills</Link>
+            <NavLink to="/skills" className={({ isActive }) => `${classes.link} ${isActive ? classes.activeLink : ''}`}>Skills</NavLink>
           </Button>
           <Button color="inherit">
-            <Link to="/achievements" className={classes.link}>Achievements</Link>
+            <NavLink to="/achievements" className={({ isActive }) => `${classes.link} ${isActive ? classes.activeLink : ''}`}>Achievements</NavLink>
           </Button>
            {/* <Button color="inherit">
-                    <Link to="/github-metrics" className={classes.link}>GitHub Metrics</Link>
+                    <NavLink to="/github-metrics" className={({ isActive }) => `${classes.link} ${isActive ? classes.activeLink : ''}`}>GitHub Metrics</NavLink>
                 </Button> */}
           <Button color="inherit">
-            <Link to="/contact" className={classes.link}>Contact</Link>
+            <NavLink to="/contact" className={({ isActive }) => `${classes.link} ${isActive ? classes.activeLink : ''}`}>Contact</NavLink>
           </Button>
         </>
       );
@@ -76,39 +93,37 @@ const Menu: React.FC = () => {
       const drawerMenuItems = (
         <div className={classes.list} role="presentation" onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
          
-         
-          <List>
-            <ListItem button className={classes.listItem}>
-              <Link to="/" className={classes.link}>
-              <ListItemText primary="Profile" />
-              </Link>
-            </ListItem>
-            <ListItem button>
-              <Link to="/experience" className={classes.link}>
-                <ListItemText primary="Experience" />
-              </Link>
-            </ListItem>
-            <ListItem button>
-              <Link to="/skills" className={classes.link}>
-                <ListItemText primary="Skills" />
-              </Link>
-            </ListItem>
-            <ListItem button>
-              <Link to="/achievements" className={classes.link}>
-                <ListItemText primary="Achievements" />
-              </Link>
-            </ListItem>
-            {/* <ListItem button>
-              <Link to="/github-metrics" className={classes.link}>
-                <ListItemText primary="Github Metrics" />
-              </Link>
-            </ListItem> */}
-            <ListItem button>
-              <Link to="/contact" className={classes.link}>
-                <ListItemText primary="Contact" />
-              </Link>
-            </ListItem>
-          </List>
+            <Button color="inherit" className={classes.listItem}>
+              <NavLink to="/" className={({ isActive }) => `${classes.link} ${isActive ? classes.   activeLink : 'listItemText'}`}>
+                Profile
+              </NavLink>
+            </Button>
+
+            <Button color="inherit" className={classes.listItem}>
+              <NavLink to="/experience" className={({ isActive }) => `${classes.link} ${isActive ? classes.activeLink : ''}`}>
+                Experience
+              </NavLink>
+            </Button>
+            <Button color="inherit" className={classes.listItem}>
+              <NavLink to="/skills" className={({ isActive }) => `${classes.link} ${isActive ? classes.activeLink : ''}`}>
+                Skills
+              </NavLink>
+            </Button>
+            <Button color="inherit" className={classes.listItem}>
+              <NavLink to="/achievements" className={({ isActive }) => `${classes.link} ${isActive ? classes.activeLink : ''}`}>
+                Achievements
+              </NavLink>
+            </Button>
+            {/* <Button color="inherit" className={classes.listItem}>
+              <NavLink to="/github-metrics" className={({ isActive }) => `${classes.link} ${isActive ? classes.activeLink : ''}`}>
+                Github Metrics
+              </NavLink>
+            </Button> */}
+            <Button color="inherit" className={classes.listItem}>
+              <NavLink to="/contact" className={({ isActive }) => `${classes.link} ${isActive ? classes.activeLink : ''}`}>
+                Contact
+              </NavLink>
+            </Button>
         </div>
       );
 
@@ -120,22 +135,22 @@ const Menu: React.FC = () => {
                 </Typography>
               
                 {/* <Button color="inherit">
-                    <Link to="/" className={classes.link}>Profile</Link>
+                    <Link to="/" className={({ isActive }) => `${classes.link} ${isActive ? classes.activeLink : ''}`}>Profile</Link>
                 </Button>
                 <Button color="inherit">
-                    <Link to="/experience" className={classes.link}>Experience</Link>
+                    <Link to="/experience" className={({ isActive }) => `${classes.link} ${isActive ? classes.activeLink : ''}`}>Experience</Link>
                 </Button>
                 <Button color="inherit">
-                    <Link to="/skills" className={classes.link}>Skills</Link>
+                    <Link to="/skills" className={({ isActive }) => `${classes.link} ${isActive ? classes.activeLink : ''}`}>Skills</Link>
                 </Button>
                 <Button color="inherit">
-                    <Link to="/achievements" className={classes.link}>Achievements</Link>
+                    <Link to="/achievements" className={({ isActive }) => `${classes.link} ${isActive ? classes.activeLink : ''}`}>Achievements</Link>
                 </Button>
                 <Button color="inherit">
-                    <Link to="/github-metrics" className={classes.link}>GitHub Metrics</Link>
+                    <Link to="/github-metrics" className={({ isActive }) => `${classes.link} ${isActive ? classes.activeLink : ''}`}>GitHub Metrics</Link>
                 </Button>
                 <Button color="inherit">
-                    <Link to="/contact" className={classes.link}>Contact</Link>
+                    <Link to="/contact" className={({ isActive }) => `${classes.link} ${isActive ? classes.activeLink : ''}`}>Contact</Link>
                 </Button> */}
 
 {isMobile ? (

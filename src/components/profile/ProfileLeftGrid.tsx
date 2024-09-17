@@ -60,15 +60,15 @@ const useStyles = makeStyles((theme) => ({
     section: {
         marginBottom: theme.spacing(2),
     },
-   
+
     contact: {
-        display:'flex',
+        display: 'flex',
         margin: theme.spacing(1),
-        alignItems:'center',
-        columnGap:'10px',
+        alignItems: 'center',
+        columnGap: '10px',
     },
     connect: {
-        textAlign:'left',
+        textAlign: 'left',
     },
 
 }));
@@ -78,41 +78,41 @@ const ProfileLeftGrid: React.FC<ProfileProps> = ({ name, avatarUrl, githubAvatar
     const profileAvatarUrl = githubAvatarUrl || avatarUrl || 'https://via.placeholder.com/150';
 
     return (
-        <Card className={classes.root}>
+        <Card className={classes.root} elevation={0}>
             <CardContent >
                 <div className={classes.leftColumn}>
                     {/*  <AvatarCard /> */}
-                    <Avatar src={profileAvatarUrl} alt={name} className={classes.avatar} variant="circle" />
+                    <Avatar src={profileAvatarUrl} alt={name} className={classes.avatar} variant="circular" />
                     <Typography variant="button" display="block" className={classes.name}>
                         {name}</Typography>
-                        <Typography variant="overline" display="block" >
+                    <Typography variant="overline" display="block" >
                         Application Developer</Typography>
-                    
+
                     <Divider orientation="horizontal" />
                     <Typography variant="caption" display="block" gutterBottom className={classes.contact}>
-                       <LocationOnOutlined/> Lisbon, Portugal 
+                        <LocationOnOutlined /> Lisbon, Portugal
                     </Typography>
 
                     <Typography gutterBottom variant="caption" display='block' className={classes.contact}>
-                                        <EmailOutlined />{email}
-                                    </Typography>
-                                    <Typography gutterBottom variant="caption" display='block' className={classes.contact}>
-                                    <PhoneOutlined /> {phone}
-                                    </Typography>
-                    
+                        <EmailOutlined />{email}
+                    </Typography>
+                    <Typography gutterBottom variant="caption" display='block' className={classes.contact}>
+                        <PhoneOutlined /> {phone}
+                    </Typography>
+
                     {/* <HireMeButton /> */}
                     <Divider orientation="horizontal" />
-                        <Paper elevation={0}>
-                            <CardActions>
-                                <Button size="small" color="primary" href={githubUrl} target="_blank" rel="noopener">
-                                    GitHub <GitHub className={classes.icon} />
-                                </Button>
-                                <Button size="small" color="primary" href={linkedinUrl} target="_blank" rel="noopener">
+                    <Paper elevation={0}>
+                        <CardActions>
+                            <Button size="small" color="primary" href={githubUrl} target="_blank" rel="noopener">
+                                GitHub <GitHub className={classes.icon} />
+                            </Button>
+                            <Button size="small" color="primary" href={linkedinUrl} target="_blank" rel="noopener">
                                 LinkedIn <LinkedIn className={classes.icon} />
-                                </Button>
-                            </CardActions>
-                        </Paper>
-                   
+                            </Button>
+                        </CardActions>
+                    </Paper>
+
                     {/* <VideoProfile videoUrl={videoUrl} /> */}
                 </div>
                 <Divider orientation="horizontal" flexItem />

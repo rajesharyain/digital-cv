@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, Paper, Typography, Avatar as MuiAvatar, withStyles } from '@material-ui/core';
+import { makeStyles, Paper, Typography, Avatar as MuiAvatar, withStyles, Card, CardContent } from '@material-ui/core';
 import Timeline from '@material-ui/lab/Timeline';
 import TimelineItem from '@material-ui/lab/TimelineItem';
 import TimelineSeparator from '@material-ui/lab/TimelineSeparator';
@@ -14,8 +14,8 @@ const useStyles = makeStyles((theme) => ({
         objectFit: 'contain',
     },
     paper: {
-        padding: '6px 16px',
-        marginBottom: theme.spacing(2),
+        padding: '16px 0px',
+       /*  marginBottom: theme.spacing(2), */
         position: 'relative', // Allow absolute positioning within Paper
     },
     timelineContent: {
@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
     timelineLine: {
         margin: 0,
         padding: 0,
+       
     },
     timelineItem: {
         '&:before': {
@@ -85,7 +86,13 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '0.9rem', // Smaller font size for entitle
         color: theme.palette.text.secondary, // Distinguish entitle from the company name
     },
-  
+    durationBold: {
+        fontWeight: 'bold',
+    },
+    timeLineConnector:{
+       width: 1,
+       background: theme.palette.grey[400],
+    },
   
 }));
 
@@ -264,13 +271,15 @@ export default function ExperienceTimeline() {
 
 
     return (
+        <Card elevation={0}>
+            <CardContent>
         <Timeline className={classes.timelineLine} align="left">
             {experiences.map((experience, index) => (
                 <TimelineItem key={index} className={classes.timelineItem}>
                     <TimelineSeparator>
                         {/* Company logo inside TimelineDot */}
-                        <Typography variant="button" color="textSecondary">
-                         {initialsOfDuration(experience.duration)}
+                        <Typography variant="overline" className={classes.durationBold} color="textSecondary">
+                            {initialsOfDuration(experience.duration)}
                         </Typography>
                         {/* <TimelineDot className={classes.timelineDot} color='secondary'>
                        
@@ -281,10 +290,10 @@ export default function ExperienceTimeline() {
                                 className={`${classes.companyLogo} ${classes.avatarInitial}`}
                             />
                         </TimelineDot> */}
-                        {index < experiences.length - 1 && <TimelineConnector />}
+                        {index < experiences.length - 1 && <TimelineConnector className={classes.timeLineConnector} />}
                     </TimelineSeparator>
                     <TimelineContent className={classes.timelineContentWrapper}>
-                        <Paper elevation={3} className={classes.paper}>
+                        <Paper elevation={0} className={classes.paper}>
                             {/* Display the client logo in the top right corner */}
                             {experience.clientLogo && (
                                 <div style={
@@ -361,5 +370,7 @@ export default function ExperienceTimeline() {
                 </TimelineItem>
             ))}
         </Timeline>
+        </CardContent>
+        </Card>
     );
 }

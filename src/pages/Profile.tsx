@@ -64,14 +64,14 @@ const ProfilePage: React.FC = () => {
             <Profile {...candidateProfile} />
           
            {/*  <VictoryChartPage userName="rajesharyain" totalContributions={0} contributionDays={[]} /> */}
-            <Button
+           {/*  <Button
                 variant="contained"
                 color="primary"
                 onClick={handlePrint}
                 style={{ marginTop: 20 }}
             >
                 Download PDF
-            </Button>
+            </Button> */}
         </div>
     );
 };

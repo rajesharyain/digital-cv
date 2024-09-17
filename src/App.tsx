@@ -85,14 +85,14 @@ const App: React.FC = () => {
       <CssBaseline />
       <Menu />
 
-      <Container style={{ marginTop: '20px' }}>
-        <Grid container spacing={3}>
+      <Container style={{ marginTop: '20px' }} >
+        <Grid container spacing={2} >
           <Grid item xs={12} md={3}>
            <ProfileLeftGrid {...candidateProfile}/>
           </Grid>
  
           <Grid item xs={12} md={6}>
-            <Routes>
+            <Routes >
               {/* <Route path="/" element={<Home />} /> */}
               <Route path="/" element={<ProfilePage />} />
               <Route path="/experience" element={<WorkExpereincePage />} />
