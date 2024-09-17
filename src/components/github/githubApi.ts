@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 //TODO: My access token -> to use for accessing githubApi
-const GITHUB_STRING = process.env.GITHUB_STRING;
+const GITHUB_STRING = process.env.REACT_APP_GITHUB_STRING || process.env.GITHUB_STRING;
 const query = `
 query($userName:String!) {
   user(login: $userName) {
