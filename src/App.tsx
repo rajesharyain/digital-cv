@@ -1,5 +1,5 @@
 // src/App.tsx
-import React from 'react';
+import React, { useRef } from 'react';
 import { Grid, Container, CssBaseline, Typography, makeStyles } from '@material-ui/core';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -16,8 +16,8 @@ import WorkExpereincePage from './pages/WorkExpereincePage';
 
 const useStyles = makeStyles((theme) => ({
   container: {
-      marginTop: '80px',
-      paddingTop: '20px',
+     /*  marginTop: '100px',
+      paddingTop: '20px', */
   },
   header: {
       fontFamily: 'Lobster, cursive',
@@ -30,6 +30,8 @@ const useStyles = makeStyles((theme) => ({
 
 const App: React.FC = () => {
   const classes = useStyles();
+  const mainContentRef = useRef<HTMLDivElement | null>(null); // Create a ref for the middle section
+
   const candidateProfile = {
     name: 'Rajesh Kumar',
     avatarUrl: 'https://via.placeholder.com/150',
@@ -83,15 +85,15 @@ const App: React.FC = () => {
     <Router>
 
       <CssBaseline />
-      <Menu />
+      <Menu mainContentRef={mainContentRef} />
 
-      <Container style={{ marginTop: '20px' }} >
+      <Container >
         <Grid container spacing={2} >
           <Grid item xs={12} md={3}>
            <ProfileLeftGrid {...candidateProfile}/>
           </Grid>
  
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={6} ref={mainContentRef}>
             <Routes >
               {/* <Route path="/" element={<Home />} /> */}
               <Route path="/" element={<ProfilePage />} />

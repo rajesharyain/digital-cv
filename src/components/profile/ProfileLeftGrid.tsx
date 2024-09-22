@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
         textTransform: 'uppercase',
         fontWeight: 600,
         /*  fontSize: '1.5rem', */
-        /*marginBottom: theme.spacing(1), */
+        marginTop: theme.spacing(1),
     },
     secondaryTitle: {
         fontSize: '1.2rem',
@@ -82,7 +82,7 @@ const ProfileLeftGrid: React.FC<ProfileProps> = ({ name, avatarUrl, githubAvatar
             <CardContent >
                 <div className={classes.leftColumn}>
                     {/*  <AvatarCard /> */}
-                    <Avatar src={profileAvatarUrl} alt={name} className={classes.avatar} variant="circular" />
+                    <Avatar src={profileAvatarUrl} alt={name} className={classes.avatar} variant="circular"  />
                     <Typography variant="button" display="block" className={classes.name}>
                         {name}</Typography>
                     <Typography variant="overline" display="block" >

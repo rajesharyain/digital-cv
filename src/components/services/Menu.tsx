@@ -1,8 +1,36 @@
 // src/components/Menu.tsx
-import React, { useState } from 'react';
-import { AppBar, Toolbar, Typography, Button, makeStyles, useMediaQuery, useTheme, ListItem, ListItemText, Drawer, IconButton, List } from '@material-ui/core';
+import React, { useState, useEffect } from 'react';
+import { AppBar, Toolbar, Typography, Button, makeStyles, useMediaQuery, useTheme, ListItem, ListItemText, Drawer, IconButton, List, Slide, useScrollTrigger, CssBaseline } from '@material-ui/core';
 import { Menu as MenuIcon } from '@material-ui/icons';
 import { Link, useLocation , NavLink  } from 'react-router-dom';
+
+const HEADER_HEIGHT = 56;
+
+interface MenuProps {
+  mainContentRef: React.RefObject<HTMLDivElement>;
+}
+
+interface Props {
+  /**
+   * Injected by the documentation to work in an iframe.
+   * You won't need it on your project.
+   */
+  window?: () => Window;
+  children: React.ReactElement;
+}
+
+function HideOnScroll(props: Props) {
+  const { children, window } = props;
+ 
+  const trigger = useScrollTrigger({ target: window ? window() : undefined });
+
+  return ( 
+    
+    <Slide appear={false} direction="down" in={!trigger}>
+      {children}
+    </Slide>
+  );
+}
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -46,7 +74,8 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-const Menu: React.FC = () => {
+
+const Menu: React.FC<MenuProps> = ({ mainContentRef }) => {
     const classes = useStyles();
     const theme = useTheme();
     const location = useLocation();
@@ -63,11 +92,23 @@ const Menu: React.FC = () => {
   };
   
 
+  const handleNavClick = () => {
+     if (mainContentRef.current) {
+      
+      const offsetPosition = mainContentRef.current.getBoundingClientRect().top + window.scrollY - HEADER_HEIGHT;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
+      //mainContentRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } 
+    setDrawerOpen(false); // Close drawer after navigation
+  };
+
       const menuItems = (
         <>
           <Button color="inherit">
             <NavLink to="/"  className={({ isActive }) => `${classes.link} ${isActive ? classes.activeLink : ''}`}>
-
               Profile
            </NavLink>
             {/* <NavLink to="/" className={({ isActive }) => `${classes.link} ${isActive ? classes.activeLink : ''}`}>Profile</NavLink> */}
@@ -94,23 +135,31 @@ const Menu: React.FC = () => {
         <div className={classes.list} role="presentation" onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
          
             <Button color="inherit" className={classes.listItem}>
-              <NavLink to="/" className={({ isActive }) => `${classes.link} ${isActive ? classes.   activeLink : 'listItemText'}`}>
+              <NavLink
+               onClick={handleNavClick}
+               to="/" className={({ isActive }) => `${classes.link} ${isActive ? classes.   activeLink : 'listItemText'}`}>
                 Profile
               </NavLink>
             </Button>
 
             <Button color="inherit" className={classes.listItem}>
-              <NavLink to="/experience" className={({ isActive }) => `${classes.link} ${isActive ? classes.activeLink : ''}`}>
+              <NavLink
+                onClick={handleNavClick}
+                to="/experience" className={({ isActive }) => `${classes.link} ${isActive ? classes.activeLink : ''}`}>
                 Experience
               </NavLink>
             </Button>
             <Button color="inherit" className={classes.listItem}>
-              <NavLink to="/skills" className={({ isActive }) => `${classes.link} ${isActive ? classes.activeLink : ''}`}>
+              <NavLink
+                onClick={handleNavClick}
+                to="/skills" className={({ isActive }) => `${classes.link} ${isActive ? classes.activeLink : ''}`}>
                 Skills
               </NavLink>
             </Button>
             <Button color="inherit" className={classes.listItem}>
-              <NavLink to="/achievements" className={({ isActive }) => `${classes.link} ${isActive ? classes.activeLink : ''}`}>
+              <NavLink 
+                onClick={handleNavClick}
+                to="/achievements" className={({ isActive }) => `${classes.link} ${isActive ? classes.activeLink : ''}`}>
                 Achievements
               </NavLink>
             </Button>
@@ -120,7 +169,9 @@ const Menu: React.FC = () => {
               </NavLink>
             </Button> */}
             <Button color="inherit" className={classes.listItem}>
-              <NavLink to="/contact" className={({ isActive }) => `${classes.link} ${isActive ? classes.activeLink : ''}`}>
+              <NavLink 
+                onClick={handleNavClick}
+                to="/contact" className={({ isActive }) => `${classes.link} ${isActive ? classes.activeLink : ''}`}>
                 Contact
               </NavLink>
             </Button>
@@ -128,7 +179,8 @@ const Menu: React.FC = () => {
       );
 
     return (
-        <AppBar position="static">
+    /*   <HideOnScroll> */
+        <AppBar position='sticky'>
             <Toolbar>
                 <Typography variant="h6" className={classes.title}>
                     Digital Profile
@@ -170,7 +222,10 @@ const Menu: React.FC = () => {
           )}
             </Toolbar>
         </AppBar>
+        /* </HideOnScroll> */
     );
 };
 
 export default Menu;
+
+
