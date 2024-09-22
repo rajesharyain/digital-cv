@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, Paper, Typography, Avatar as MuiAvatar, withStyles, Card, CardContent } from '@material-ui/core';
+import { makeStyles, Paper, Typography, Avatar as MuiAvatar, withStyles, Card, CardContent, useTheme, useMediaQuery } from '@material-ui/core';
 import Timeline from '@material-ui/lab/Timeline';
 import TimelineItem from '@material-ui/lab/TimelineItem';
 import TimelineSeparator from '@material-ui/lab/TimelineSeparator';
@@ -268,6 +268,8 @@ const initialsOfDuration = (duration:string) => {
 }
 export default function ExperienceTimeline() {
     const classes = useStyles();
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm')); // Detects if the screen width is small (like mobile)
 
 
     return (
@@ -295,7 +297,7 @@ export default function ExperienceTimeline() {
                     <TimelineContent className={classes.timelineContentWrapper}>
                         <Paper elevation={0} className={classes.paper}>
                             {/* Display the client logo in the top right corner */}
-                            {experience.clientLogo && (
+                            {!isMobile && experience.clientLogo && (
                                 <div style={
                                    { 
                                     display: 'grid',
