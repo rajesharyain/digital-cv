@@ -1,4 +1,3 @@
-// src/components/Profile.tsx
 import React from 'react';
 import { Card, CardContent, Typography, Grid, Avatar, Divider, Button } from '@material-ui/core';
 import { GitHub, LinkedIn, Email, Phone } from '@material-ui/icons';
@@ -15,41 +14,9 @@ import VictoryChartPage from '../../pages/VictoryChartPage';
 import Organizations from './Organizations';
 import CurrentActivity from '../../pages/CurrentActivity';
 import { Link } from 'react-router-dom';
+import { ProfileProps } from './profileProps';
 
-interface ProfileProps {
-    name: string;
-    avatarUrl?: string;
-    githubAvatarUrl?: string;
-    githubUrl: string;
-    linkedinUrl: string;
-    email: string;
-    phone: string;
-    videoUrl?: string;
-    skills: string[];
-    summary: string;
-    achievements: { title: string; imageUrl: string; description: string }[];
-    metrics: { title: string; value: string; imageUrl: string }[];
-    contributionGraphUrl: string;
-}
 
-                    
-/* const organizations = [
-    { name: 'Aubay|CTW.', period: '01/2024 - Present' , current:true, logo:''},
-    { name: 'Citicorp Services Private Ltd.', period: '10/2019 - 01/2024' , current:false, logo:'' },
-    { name: 'Mphasis', period: '10/2018 - 10/2019' , current:false , logo:''},
-    { name: 'Accenture', period: '01/2014 - 10/2018'  , current:false, logo:''},
-    { name: 'Entrata (Xento System)', period: '07/2012 - 01/2014' , current:false , logo:''},
-    { name: 'Smartdata Enterprises, India', period: '06/2011 - 07/2012' , current:false , logo:''},
-]; */
-
-const organizations = [
-    { name: 'Aubay|CTW.', period: '01/2024 - Present', current: true, logo: 'company/aubay_logo.svg', link: 'https://www.aubay.com/' },
-    { name: 'Citicorp Services Private Ltd.', period: '10/2019 - 01/2024', current: false, logo: 'company/citi_logo.svg', link: 'https://www.citi.com/' },
-    { name: 'Mphasis', period: '10/2018 - 10/2019', current: false, logo: 'company/mphasis_logo.svg', link: 'https://www.mphasis.com/' },
-    { name: 'Accenture', period: '01/2014 - 10/2018', current: false, logo: 'company/accenture_logo.svg', link: 'https://www.accenture.com/' },
-    { name: 'Entrata (Xento System)', period: '07/2012 - 01/2014', current: false, logo: 'company/entrata_logo.svg', link: 'https://www.entrata.com/' },
-    { name: 'Smartdata Enterprises, India', period: '06/2011 - 07/2012', current: false, logo: 'company/smartdata_logo.svg', link: 'https://www.smartdatainc.com/' },
-  ];
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -61,15 +28,7 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'space-between',  // Distribute items to opposite ends
         alignItems: 'center',             // Align vertically in the middle
         marginBottom: theme.spacing(2),   // Add some spacing below the section
-      },
-    /* leftColumn: {
-        flex: 1,
-        marginRight: theme.spacing(2),
-        textAlign: 'center',
     },
-    rightColumn: {
-        flex: 2,
-    }, */
     avatar: {
         width: theme.spacing(15),
         height: theme.spacing(15),
@@ -81,24 +40,32 @@ const useStyles = makeStyles((theme) => ({
     },
     section: {
         marginBottom: theme.spacing(2),
-       
+
     },
-    currentActivityBackground:{
+    currentActivityBackground: {
         marginTop: theme.spacing(1),
         background: '#F5F7F8',
-        /* background:theme.palette.grey[100], */
-        padding:15,
+        padding: 15,
     },
-    sectionTitle:{
-        textTransform:'uppercase',
-        fontWeight:600,
+    sectionTitle: {
+        textTransform: 'uppercase',
+        fontWeight: 600,
     }
 }));
 
-const Profile: React.FC<ProfileProps> = ({ name, avatarUrl, githubAvatarUrl, githubUrl, linkedinUrl, email, phone, videoUrl, skills, summary, achievements, metrics, contributionGraphUrl }) => {
+const Profile: React.FC<ProfileProps> = ({ summary, githubUserName, organizations, currentExperience, skills }) => {
     const classes = useStyles();
-    const profileAvatarUrl = githubAvatarUrl || avatarUrl || 'https://via.placeholder.com/150';
-    const userName = 'rajesharyain';
+
+    const SUMMARY_LABEL = "Summary";
+    const ORGANIZATION_LABEL = "Current Organazation";
+    const SKILLS_LABEL = "Skills";
+    const HIGHLIGHTED_SKILLS_LABEL = "Currently focused on the highlighted skills";
+    const GITHUB_ACTIVITY_LABEL = "Github Activity";
+    const COMPANIES_LABEL = "Organizations, I Worked With";
+    const VIEW_BUTTON_LABEL = "View All";
+
+    console.log("From profil -> ", currentExperience)
+
     return (
         <Card className={classes.root} elevation={0}>
             {/* <div className={classes.leftColumn}>
@@ -120,70 +87,64 @@ const Profile: React.FC<ProfileProps> = ({ name, avatarUrl, githubAvatarUrl, git
                 </div>
                 <VideoProfile videoUrl={videoUrl} />
             </div> */}
-            {/* <Divider orientation="vertical" flexItem /> */}
-            <div /* className={classes.rightColumn} */>
+
+            <div>
                 <CardContent>
                     <div className={classes.section}>
-                        <Typography variant="button" className={classes.sectionTitle}>Summary</Typography>
+                        <Typography variant="button" className={classes.sectionTitle}>{SUMMARY_LABEL}</Typography>
                         <Typography variant="body1" display='block' >{summary}</Typography>
                     </div>
 
-                   {/*  <Divider orientation="horizontal"/> */}
-                   <div className={classes.section}>
-                   <div className={classes.container}>
-                    <Typography variant="button" className={classes.sectionTitle}>Current Organazation</Typography>
-                    <Button
-                        variant="outlined"
-                        color="primary"
-                        component={Link} 
-                        to="/experience"
-                        size="small"
-                        >
-                        View All
-                        </Button>
-                        </div>
-                        <div className={classes.currentActivityBackground}>
-                            <CurrentActivity/>
-                        </div>
-                    </div>
-                   
                     <div className={classes.section}>
-                    <div className={classes.container}>
-                        <Typography variant="button" className={classes.sectionTitle}>Skills</Typography>
-                        <Button
-                            variant="outlined"
-                            color="primary"
-                            component={Link} 
-                            to="/skills"
-                            size="small"
+                        <div className={classes.container}>
+                            <Typography variant="button" className={classes.sectionTitle}>{ORGANIZATION_LABEL}</Typography>
+                            <Button
+                                variant="outlined"
+                                color="primary"
+                                component={Link}
+                                to="/experience"
+                                size="small"
                             >
-                                View All
+                                {VIEW_BUTTON_LABEL}
                             </Button>
                         </div>
-                        <Typography variant='body2' >Currently focused on the highlighted skills.</Typography>
-                        <HighlightedSkillsSection />
-                    </div>
-
-                    <div className={classes.section}>
-                        <Typography variant="button" className={classes.sectionTitle}>Github Activity</Typography>
                         <div className={classes.currentActivityBackground}>
-                            <ReactChart userName={userName} />
+                            <CurrentActivity {...currentExperience}/>
                         </div>
                     </div>
 
                     <div className={classes.section}>
-                        <Typography variant="button" className={classes.sectionTitle}>Organizations, I Worked With</Typography>
-                    <Organizations
-                            organizations={organizations}
-                        />
+                        <div className={classes.container}>
+                            <Typography variant="button" className={classes.sectionTitle}>{SKILLS_LABEL}</Typography>
+                            <Button
+                                variant="outlined"
+                                color="primary"
+                                component={Link}
+                                to="/skills"
+                                size="small"
+                            >
+                                {VIEW_BUTTON_LABEL}
+                            </Button>
+                        </div>
+                        <Typography variant='body2' >{HIGHLIGHTED_SKILLS_LABEL}</Typography>
+                        <HighlightedSkillsSection skills = {skills}/>
+                    </div>
+
+                    <div className={classes.section}>
+                        <Typography variant="button" className={classes.sectionTitle}>{GITHUB_ACTIVITY_LABEL}</Typography>
+                        <div className={classes.currentActivityBackground}>
+                            <ReactChart userName={githubUserName} />
+                        </div>
+                    </div>
+
+                    <div className={classes.section}>
+                        <Typography variant="button" className={classes.sectionTitle}>{COMPANIES_LABEL}</Typography>
+                        <Organizations organizations = {organizations} />
                     </div>
                     
-                     {/* <Chart userName={userName} /> */}
-                    
-                   
-
-                  {/*   <GitHubMetrics metrics={metrics} contributionGraphUrl={contributionGraphUrl} /> */}
-                   {/*  <Achievements achievements={achievements} /> */}
+                    {/* <Chart userName={githubUserName} /> */}
+                    {/*   <GitHubMetrics metrics={metrics} contributionGraphUrl={contributionGraphUrl} /> */}
+                    {/*  <Achievements achievements={achievements} /> */}
                 </CardContent>
             </div>
         </Card>

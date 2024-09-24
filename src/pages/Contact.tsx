@@ -39,33 +39,6 @@ const Contact: React.FC = () => {
       <Typography variant="h5" align="left" className={classes.bold} gutterBottom>
         Contact Information
       </Typography>
-
-      {/* <Paper className={classes.paper}>
-        <Typography variant="button" className={classes.bold}>
-          Networking
-        </Typography>
-
-        <ul>
-          <li>
-            <Typography variant="overline">
-              <a href="https://leetcode.com/user6937Xv/" className={classes.link}>LeetCode Profile</a>
-            </Typography>
-          </li>
-          <li>
-            <Typography variant="overline" >
-              <a href="https://linkedin.com/in/rajesharyain" className={classes.link}>LinkedIn Profile</a>
-            </Typography>
-          </li>
-
-          <li>
-            <Typography variant="overline" >
-              <a href="https://github.com/rajesharyain" className={classes.link}>Github Profile</a>
-            </Typography>
-          </li>
-
-        </ul>
-
-      </Paper> */}
       <Grid container spacing={3}>
 
 
@@ -75,13 +48,6 @@ const Contact: React.FC = () => {
               Work Preferences
             </Typography>
 
-            {/*  <Typography variant="subtitle2" className={classes.bold}>
-              Open for Remote Work:
-            </Typography>
-            <Typography variant="body2">Yes</Typography> 
-            <Typography variant="subtitle2" className={classes.bold}>
-              Interested Locations:
-            </Typography>*/}
             <List>
               <ListItem className={classes.listItem}>
                 <ListItemText primary="Remote Work" />

@@ -1,0 +1,70 @@
+{
+    "data":
+        {
+            "name": "Rajesh Kumar",
+            "avatarUrl": "https://via.placeholder.com/150",
+            "githubAvatarUrl": "https://github.com/rajesharyain.png",
+            "githubUrl": "https://github.com/rajesharyain",
+            "linkedinUrl": "linkedin.com/in/rajesharyain",
+            "email": "rkumar.arya@yahoo.com",
+            "phone": "+351-936522007",
+            "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+            "summary": "Experienced software developer with a strong background in developing scalable web applications and working with modern JavaScript frameworks. Proven ability to work independently and as part of a team to deliver high-quality software solutions. Passionate about learning new technologies and continuously improving skills.",
+            "contributionGraphUrl": "https://github.com/username.png",
+            "githubUserName": "rajesharyain",
+            "organizations" : [
+                { "name": "Aubay|CTW.", "period": "01/2024 - Present", "current": true, "logo": "company/aubay_logo.svg", "link": "https://www.aubay.com/" },
+                { "name": "Citicorp Services Private Ltd.", "period": "10/2019 - 01/2024", "current": false, "logo": "company/citi_logo.svg", "link": "https://www.citi.com/" },
+                { "name": "Mphasis", "period": "10/2018 - 10/2019", "current": false, "logo": "company/mphasis_logo.svg", "link": "https://www.mphasis.com/" },
+                { "name": "Accenture", "period": "01/2014 - 10/2018", "current": false, "logo": "company/accenture_logo.svg", "link": "https://www.accenture.com/" },
+                { "name": "Entrata (Xento System)", "period": "07/2012 - 01/2014", "current": false, "logo": "company/entrata_logo.svg", "link": "https://www.entrata.com/" },
+                { "name": "Smartdata Enterprises, India", "period": "06/2011 - 07/2012", "current": false, "logo": "company/smartdata_logo.svg", "link": "https://www.smartdatainc.com/" }
+            ],
+            "currentExperience": {
+                "companyName": "Aubay | Critical TechWorks.",
+                "duration": "01/24 - Present",
+                "entitle": "Senior Consultant",
+                "location": "Lisbon, Portugal",
+                "clientLogo": "company/ctw_logo.svg",
+                "clientName": "Critical TechWorks",
+                "companyLogo": "company/aubay_logo.svg",
+                "projects": [
+                    {
+                        "title": "MCO - Multi channel Offers",
+                        "role": "Java Backend Developer with end-to-end responsibilities from development to deployment",
+                        "details": [
+                            "Independently developed the new microservice using Qurkus framework to onboard new channel in the MCO project.",
+                            "implemented the Quarkus Cache mechanism to prevent redundant requests, improving application performance.",
+                            "Conducted code reviews and implemented best practice with SOLID principles, leveraging static code analyzer via SonarQube.",
+                            "Involved in AWS cost optimization, We leverage AWS cost optimization tools to scale down unused resources and reduce costs, all while ensuring that the existing application continued to run smoothly.",
+                            "AWS: Automated the enabling of the AWS RDS `pgaudit` extension using Terraform, streamlining the process and enhancing our database auditing capabilities",
+                            "Agile Methodology: Working in an Agile model with 2-week sprints, including sprint planning, sprint refinements, standups and retrospectives. Also responsible for presenting our work during the sprint reviews.",
+                            "Worked on OpenTelemetry and Jaeger for distributed tracing and monitoring of our microservices. Was responsible for creating some regex patterns for our response payloads in our OpenTelemetry configuration so that we can only send the matrices what we want to see on the Splunk dashboard",
+                            "We conduct some brainstorming sessions to understand underlying complexities of the tasks, identify bottlenecks, design, and implement solutions.",
+                            "Frontend: Took on the challenge of implementing Cypress code coverage for the frontend and generated the report for integration with Sonar.",
+                            "Optimized the frontend app using lightspeed devtool metrices."
+                        ]
+                    },
+                    {
+                        "title": "Quarkus Migration",
+                        "role": "Java Developer",
+                        "details": [
+                            "Independently managed the migration of our services from Quarkus 2 to Quarkus 3 within one sprint..",
+                            "Gracefully handled the major impact of Hibernate-ORM during this migration by following the migration guide.",
+                            "Addressed a significant issue related to custom serialization/deserialization written using JSON-B binding, ensuring no impact on the current functionality of the application.",
+                            "Fixed unit tests and integration tests associated with this change.",
+                            "DevOps: Experienced with Docker and DevOps practices. I have used tools like Terraform to perform this on AWS for any resource modification/addition."
+                        ]
+                    }
+                ]
+            },
+            "skills" : [
+                "JavaScript", "TypeScript", "React", "Quarkus3", "Java", "Spring Boot",
+                "Spring framework", "Rest API", "Hibernate", "Maven", "jQuery", "Angular",
+                "React", "Redux", "NodeJS", "Git", "Bitbucket", "PostgreSQL",
+                "Jenkins", "Docker","Swagger", "PostMan", "AWS", "Splunk", "Opentelemetry", "Jaeger", "Grafana"
+              ]
+        }
+       
+    
+}

@@ -1,9 +1,9 @@
 import React from 'react';
 import { makeStyles, Paper, Typography, Avatar as MuiAvatar, withStyles, Button, useMediaQuery, useTheme } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import { Experience } from '../components/profile/experienceProps';
 
-// Use the same experiences data from your main component
-const currentExperience = {
+/* const currentExperience: Experience = {
   companyName: 'Aubay | Critical TechWorks.',
   duration: '01/2024 - Present',
   entitle: 'Senior Consultant',
@@ -39,13 +39,10 @@ const currentExperience = {
       ],
     },
   ],
-};
+}; */
 
-// Styles
 const useStyles = makeStyles((theme) => ({
   paper: {
-   /*  padding: '16px', */
-   /*  marginTop: theme.spacing(2), */
     marginBottom: theme.spacing(2),
     position: 'relative',
   
@@ -92,11 +89,14 @@ const CustomAvatar = withStyles({
   },
 })(MuiAvatar);
 
-export default function CurrentActivity() {
+//export default function CurrentActivity() {
+const CurrentActivity: React.FC<Experience> = ({...currentExperience}) => {
   const classes = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
+  console.log("currentExperience -> ", currentExperience)
+  //const currentExperience = props.currentExperience;
   return (
    <div className={classes.paper}>
       {/* Display the company and client logos */}
@@ -121,7 +121,9 @@ export default function CurrentActivity() {
 
 {/* <Typography variant="h6"> Current Organazation</Typography> */}
    
-      
+   {
+    currentExperience && (
+      <>
       <Typography variant="h6" component="h1" className={classes.companyName}>
         {currentExperience.companyName}
       </Typography>
@@ -129,9 +131,16 @@ export default function CurrentActivity() {
       <Typography variant="subtitle1" className={classes.entitle}>
         {currentExperience.entitle} - {currentExperience.location}
       </Typography>
+      </>
+
+    )
+
+   }
+      
+      
 
       {/* List of projects */}
-      {currentExperience.projects.map((project, projectIndex) => (
+      {currentExperience && currentExperience.projects && currentExperience.projects.map((project, projectIndex) => (
         <div key={projectIndex} style={{ marginTop: '16px' }}>
           <Typography variant="subtitle1">
             {project.title} - {project.role}
@@ -145,17 +154,9 @@ export default function CurrentActivity() {
           </ul>
         </div>
       ))}
-      {/* <div className={classes.viewAllButton}>
-        <Button
-          variant="contained"
-          color="primary"
-          component={Link} 
-          to="/experience"
-        >
-          View All
-        </Button>
-      </div> */}
+      
     </div>
   );
 }
+export default CurrentActivity;
 

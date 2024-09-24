@@ -43,15 +43,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const allSkills = [
-  'JavaScript', 'TypeScript', 'React', 'Quarkus3', 'Java', 'Spring Boot',
-  'Spring framework', 'Rest API', 'Hibernate', 'Maven', 'jQuery', 'Angular',
-  'React', 'Redux', 'NodeJS', 'Git', 'Bitbucket', 'PostgreSQL',
-  'Jenkins', 'Docker','Swagger', 'PostMan', 'AWS', 'Splunk', 'Opentelemetry', 'Jaeger', 'Grafana'
-];
 
+interface SkillsProp {
+  skills: string[];
+}
 
-const HighlightedSkillsSection = () => {
+const HighlightedSkillsSection:React.FC<SkillsProp> = ({skills}) => {
   const classes = useStyles();
 
   return (
@@ -59,7 +56,7 @@ const HighlightedSkillsSection = () => {
      
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          {allSkills.map((skill, index) => {
+          {skills && skills.map((skill, index) => {
             let chipClass = classes.chip;
           
             if (skill === 'Java') {

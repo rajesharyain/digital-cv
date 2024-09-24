@@ -1,0 +1,76 @@
+{
+    "data": [
+        {
+            "Frontend": [
+                "JavaScript",
+                "TypeScript",
+                "React",
+                "Redux",
+                "HTML5",
+                "CSS",
+                "jQuery",
+                "Angular 2/4/6"
+            ],
+            "Backend": [
+                "Core Java",
+                "Multithreading",
+                "Executor Framework",
+                "Java8",
+                "Java 17",
+                "Spring MVC",
+                "Quarkus 3 framework",
+                "Spring Boot 2.5",
+                "Spring Data JPA",
+                "Node.js",
+                "Rest API",
+                "Hibernate"
+            ],
+            "AWS": [
+                "AWS Fargate",
+                "Cloudwatch",
+                "CloudTrail",
+                "AWS Cost Optimization",
+                "EC2",
+                "ECS",
+                "Terraform",
+                "kinesis ",
+                "RDS"
+            ],
+            "Monitoring": [
+                "Opentelemetry",
+                "Jaeger",
+                "Splunk",
+                "Grafana",
+                "Kibana"
+            ],
+            "DevOps": [
+                "Jenkins",
+                "Docker",
+                "Openshift",
+                "Apache Web Server",
+                "Nginx",
+                "JBoss 6.1+",
+                "Gradle",
+                "Maven"
+            ],
+            "Databases": [
+                "SQL",
+                "MySQL",
+                "PostgreSQL",
+                "Oracle 11g"
+            ],
+            "Tools": [
+                "Git",
+                "Bitbucket",
+                "Swagger",
+                "PostMan",
+                "Eclipse",
+                "intellij idea",
+                "webstorm",
+                "Visualstudio",
+                "draw.io",
+                "visio"
+            ]
+        }
+    ]
+}

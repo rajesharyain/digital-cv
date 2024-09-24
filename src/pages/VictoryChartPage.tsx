@@ -24,7 +24,7 @@ const VictoryChartPage: FC<Props> = ({  userName }) => {
 
     const [totalContributions, setTotalContributions] = useState<number>(0);
     const [contributionDays, setContributionDays] = useState<ContributionDay[]>([]);
-    const MAIN_AUTHOR_USER_NAME = 'rajesharyain'; // Replace with your main author's username
+    const MAIN_AUTHOR_USER_NAME = 'rajesharyain';
   
 
     useEffect(() => {

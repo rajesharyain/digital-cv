@@ -1,7 +1,8 @@
-// src/components/Achievements.tsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, CardContent, Typography, Grid, Avatar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { apiGet } from '../../api/apiService';
+
 
 interface AchievementsProps {
     achievements: { title: string; imageUrl: string; description: string }[];
@@ -28,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Achievements: React.FC<AchievementsProps> = ({ achievements }) => {
     const classes = useStyles();
-
+   
     return (
         <Card className={classes.root}>
             <CardContent>
