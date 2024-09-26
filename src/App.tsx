@@ -1,5 +1,5 @@
 // src/App.tsx
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Grid, Container, CssBaseline, Typography, makeStyles } from '@material-ui/core';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -13,6 +13,9 @@ import GitHubMetrics from './pages/GitHubMetrics';
 import ProjectDetails from './components/projects/ProjectDetails';
 import ProfileLeftGrid from './components/profile/ProfileLeftGrid';
 import WorkExpereincePage from './pages/WorkExpereincePage';
+import { ProfileProps } from './components/profile/profileProps';
+import { API_PATH } from './api/apiConstants';
+import { apiGet } from './api/apiService';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -32,54 +35,22 @@ const App: React.FC = () => {
   const classes = useStyles();
   const mainContentRef = useRef<HTMLDivElement | null>(null); // Create a ref for the middle section
 
-  const candidateProfile = {
-    name: 'Rajesh Kumar',
-    avatarUrl: 'https://via.placeholder.com/150',
-    githubAvatarUrl: 'https://github.com/rajesharyain.png', // Replace with actual GitHub avatar URL
-    githubUrl: 'https://github.com/rajesharyain',
-    linkedinUrl: 'https://linkedin.com/in/rajesharyain',
-    email: 'rkumar.arya@yahoo.com',
-    phone: '+351-936522007',
-    videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Replace with actual video URL
+  const [candidateProfile, setCandidateProfile] = useState<ProfileProps | undefined>();
 
-    skills: ['JavaScript', 'TypeScript', 'React', 'Node.js', 'GraphQL'],
-    summary: 'Experienced software developer with a strong background in developing scalable web applications and working with modern JavaScript frameworks. Proven ability to work independently and as part of a team to deliver high-quality software solutions. Passionate about learning new technologies and continuously improving skills.',
-    metrics: [
-      {
-        title: 'Total Contributions',
-        value: '1234',
-        imageUrl: 'https://via.placeholder.com/50'
-      },
-      {
-        title: 'Repositories',
-        value: '42',
-        imageUrl: 'https://via.placeholder.com/50'
-      },
-      {
-        title: 'Followers',
-        value: '256',
-        imageUrl: 'https://via.placeholder.com/50'
+  useEffect(() => {
+      const fetchCandidateProfile = async () => {
+          try {
+              const response = await apiGet<ProfileProps>(API_PATH.get.profileUrl);
+              setCandidateProfile(response);
+          }
+          catch (error) {
+              console.error('Error fetching data:', error);
+          }
       }
-    ],
-    contributionGraphUrl: 'https://github.com/rajesharyain.png', // Replace with your actual GitHub username
-    achievements: [
-      {
-        title: 'Certified Kubernetes Administrator',
-        imageUrl: 'https://via.placeholder.com/50',
-        description: 'Completed certification from CNCF in 2021.'
-      },
-      {
-        title: 'AWS Certified Solutions Architect',
-        imageUrl: 'https://via.placeholder.com/50',
-        description: 'Achieved in 2020, demonstrating expertise in cloud architecture.'
-      },
-      {
-        title: 'GitHub Star',
-        imageUrl: 'https://via.placeholder.com/50',
-        description: 'Recognized for significant contributions to open-source projects in 2019.'
-      }
-    ],
-  };
+
+      fetchCandidateProfile();
+  }, []) 
+  
 
   return (
     <Router>
@@ -90,13 +61,13 @@ const App: React.FC = () => {
       <Container >
         <Grid container spacing={2} >
           <Grid item xs={12} md={3}>
-           <ProfileLeftGrid {...candidateProfile}/>
+           {candidateProfile && <ProfileLeftGrid {...candidateProfile}/>}
           </Grid>
  
           <Grid item xs={12} md={6} ref={mainContentRef}>
             <Routes >
               {/* <Route path="/" element={<Home />} /> */}
-              <Route path="/" element={<ProfilePage />} />
+              <Route path="/" element={candidateProfile && <ProfilePage data={candidateProfile}/>} />
               <Route path="/experience" element={<WorkExpereincePage />} />
               <Route path="/skills" element={<Skills />} />
               <Route path="/achievements" element={<Achievements />} />
@@ -107,7 +78,7 @@ const App: React.FC = () => {
           
           <Grid item xs={12} md={3}>
             {/* Third column content goes here */}
-           <ProjectDetails videoUrl='https://www.youtube.com/embed/FXDr1-04f7I'/>
+           <ProjectDetails {...candidateProfile} />
           </Grid>
         </Grid>
       </Container>

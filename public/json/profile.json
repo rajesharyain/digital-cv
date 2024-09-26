@@ -8,7 +8,7 @@
             "linkedinUrl": "linkedin.com/in/rajesharyain",
             "email": "rkumar.arya@yahoo.com",
             "phone": "+351-936522007",
-            "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+            "videoUrl": "",
             "summary": "Experienced software developer with a strong background in developing scalable web applications and working with modern JavaScript frameworks. Proven ability to work independently and as part of a team to deliver high-quality software solutions. Passionate about learning new technologies and continuously improving skills.",
             "contributionGraphUrl": "https://github.com/username.png",
             "githubUserName": "rajesharyain",
@@ -63,6 +63,21 @@
                 "Spring framework", "Rest API", "Hibernate", "Maven", "jQuery", "Angular",
                 "React", "Redux", "NodeJS", "Git", "Bitbucket", "PostgreSQL",
                 "Jenkins", "Docker","Swagger", "PostMan", "AWS", "Splunk", "Opentelemetry", "Jaeger", "Grafana"
+              ],
+              "education":[
+                {
+                    "title": "Master in Computer Application",
+                    "address": "Gurugram (M.D.U Rohtak)",
+                    "passout": "YR 2006 - 2009",
+                    "institute": "KIIT College of engineering"
+                }
+              ],
+              "industryDomains" :[
+                "Automobile",
+                "Telcommunication",
+                "Real Estate",
+                "Financial",
+                "E-licensing"
               ]
         }
        

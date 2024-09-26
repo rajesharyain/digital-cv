@@ -8,7 +8,12 @@ interface Organization {
     link: string;
 }
 
-
+export interface Education {
+    title: string,
+    address: string,
+    passout: string
+    institute: string
+}
 interface Achievement { title: string; imageUrl: string; description: string; }
 
 export interface ProfileProps {
@@ -28,5 +33,7 @@ export interface ProfileProps {
     contributionGraphUrl: string;
     githubUserName: string;
     currentExperience: Experience;
+    industryDomains: string[],
+    education:Education[]
 
 }

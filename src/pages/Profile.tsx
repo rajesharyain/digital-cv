@@ -9,31 +9,18 @@ import { ProfileProps } from '../components/profile/profileProps';
 import { apiGet } from '../api/apiService';
 import { API_PATH } from '../api/apiConstants';
 
-const ProfilePage: React.FC = () => {
-    const [candidateProfile, setCandidateProfile] = useState<ProfileProps | undefined>();
+interface CandiateProps {
+    data: ProfileProps;
+}
 
-    useEffect(() => {
-        const fetchCandidateProfile = async () => {
-            try {
-                const response = await apiGet<ProfileProps>(API_PATH.get.profileUrl);
-                setCandidateProfile(response);
-            }
-            catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        }
-
-        fetchCandidateProfile();
-    }, [])
-
+const ProfilePage: React.FC<CandiateProps> = ({data}) => {
     const handlePrint = () => {
         printToPDF('achievements-container', 'RajeshKumarCV.pdf');
     };
 
     return (
         <div id="achievements-container">
-           {candidateProfile && <Profile {...candidateProfile} />}
-
+           {data && <Profile {...data} />}
 
             {/*  <VictoryChartPage userName="rajesharyain" totalContributions={0} contributionDays={[]} /> */}
             {/*  <Button
