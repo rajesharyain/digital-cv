@@ -31,6 +31,7 @@
                 "projects": [
                     {
                         "title": "MCO - Multi channel Offers",
+                        "projectSkills":"JAVA | QUARKUS3 | AWS | TypeScript | PostgreSQL",
                         "role": "Java Backend Developer with end-to-end responsibilities from development to deployment",
                         "details": [
                             "Independently developed the new microservice using Qurkus framework to onboard new channel in the MCO project.",
@@ -48,6 +49,7 @@
                     {
                         "title": "Quarkus Migration",
                         "role": "Java Developer",
+                        "projectSkills":"JAVA | QUARKUS3",
                         "details": [
                             "Independently managed the migration of our services from Quarkus 2 to Quarkus 3 within one sprint..",
                             "Gracefully handled the major impact of Hibernate-ORM during this migration by following the migration guide.",

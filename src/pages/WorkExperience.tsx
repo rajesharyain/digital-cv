@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 interface Project {
   title: string;
   role: string;
+  projectSkills:string;
   details: string[];
 }
 

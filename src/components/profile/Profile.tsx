@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     },
     currentActivityBackground: {
         marginTop: theme.spacing(1),
-        background: '#F5F7F8',
+        background: '#fafafa',
         padding: 15,
     },
     sectionTitle: {
@@ -64,30 +64,8 @@ const Profile: React.FC<ProfileProps> = ({ summary, githubUserName, organization
     const COMPANIES_LABEL = "Organizations, I Worked With";
     const VIEW_BUTTON_LABEL = "View All";
 
-    console.log("From profil -> ", currentExperience)
-
     return (
         <Card className={classes.root} elevation={0}>
-            {/* <div className={classes.leftColumn}>
-                <Avatar src={profileAvatarUrl} alt={name} className={classes.avatar} />
-                <Typography variant="h5" gutterBottom>{name}</Typography>
-                <div>
-                    <Link href={githubUrl} target="_blank" rel="noopener">
-                        <GitHub className={classes.icon} />
-                    </Link>
-                    <Link href={linkedinUrl} target="_blank" rel="noopener">
-                        <LinkedIn className={classes.icon} />
-                    </Link>
-                </div>
-                <HireMeButton />
-                <div className={classes.section}>
-                    <Typography variant="h6">Contact Information</Typography>
-                    <Typography variant="body2"><Email /> {email}</Typography>
-                    <Typography variant="body2"><Phone /> {phone}</Typography>
-                </div>
-                <VideoProfile videoUrl={videoUrl} />
-            </div> */}
-
             <div>
                 <CardContent>
                     <div className={classes.section}>

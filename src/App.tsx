@@ -37,6 +37,7 @@ const App: React.FC = () => {
 
   const [candidateProfile, setCandidateProfile] = useState<ProfileProps | undefined>();
 
+
   useEffect(() => {
       const fetchCandidateProfile = async () => {
           try {
@@ -53,6 +54,7 @@ const App: React.FC = () => {
   
 
   return (
+    
     <Router>
 
       <CssBaseline />

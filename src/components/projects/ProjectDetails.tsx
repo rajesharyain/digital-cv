@@ -45,7 +45,6 @@ const useStyles = makeStyles((theme) => ({
 const ProjectDetails: React.FC<ProjectDetailsProps> = ({ videoUrl, education, industryDomains }) => {
     const classes = useStyles();
 
-    console.log("industryDomain", industryDomains)
     return (
         <div>
             {

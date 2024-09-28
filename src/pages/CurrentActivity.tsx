@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, Paper, Typography, Avatar as MuiAvatar, withStyles, Button, useMediaQuery, useTheme } from '@material-ui/core';
+import { makeStyles, Paper, Typography, Avatar as MuiAvatar, withStyles, Button, useMediaQuery, useTheme, Divider } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { Experience } from '../components/profile/experienceProps';
 
@@ -47,6 +47,9 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
   
   },
+  mainContainer:{
+    marginTop: '8px',
+  },
   companyLogo: {
     maxWidth: 200,
     maxHeight: 48,
@@ -67,6 +70,9 @@ const useStyles = makeStyles((theme) => ({
   companyName: {
     fontWeight: 'bold',
   },
+  projectTitle:{
+    fontWeight: 'bold',
+  },
   entitle: {
     fontSize: '0.9rem',
     color: theme.palette.text.secondary,
@@ -76,7 +82,11 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
   },
   currentActivity:{
-    lineHeight: '2.5rem'
+    marginLeft: '-20px',
+    marginTop: '5px'
+  },
+  currentActivityItem:{
+    lineHeight: '2.2rem'
   },
 }));
 
@@ -95,8 +105,6 @@ const CurrentActivity: React.FC<Experience> = ({...currentExperience}) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
-  console.log("currentExperience -> ", currentExperience)
-  //const currentExperience = props.currentExperience;
   return (
    <div className={classes.paper}>
       {/* Display the company and client logos */}
@@ -130,7 +138,8 @@ const CurrentActivity: React.FC<Experience> = ({...currentExperience}) => {
 
       <Typography variant="subtitle1" className={classes.entitle}>
         {currentExperience.entitle} - {currentExperience.location}
-      </Typography>
+      </Typography>  
+         <Divider></Divider>              
       </>
 
     )
@@ -138,16 +147,23 @@ const CurrentActivity: React.FC<Experience> = ({...currentExperience}) => {
    }
       
       
-
+      
       {/* List of projects */}
       {currentExperience && currentExperience.projects && currentExperience.projects.map((project, projectIndex) => (
-        <div key={projectIndex} style={{ marginTop: '16px' }}>
+        <div key={projectIndex} className={classes.mainContainer}>
+         
           <Typography variant="subtitle1">
-            {project.title} - {project.role}
+            <span>Project</span>: {project.title}
           </Typography>
+
+          <Typography variant='caption' >
+              {project.projectSkills}
+          </Typography>
+
+
           <ul className={classes.currentActivity}>
             {project.details.map((detail, detailIndex) => (
-              <li key={detailIndex}>
+              <li key={detailIndex} className={classes.currentActivityItem}>
                 <Typography variant="body2">{detail}</Typography>
               </li>
             ))}

@@ -11,6 +11,7 @@
             "projects": [
                 {
                     "title": "MCO - Multi channel Offers",
+                    "projectSkills":"JAVA | QUARKUS3 | AWS | TypeScript | PostgreSQL",
                     "role": "Java Backend Developer with end-to-end responsibilities from development to deployment",
                     "details": [
                         "Independently developed the new microservice using Qurkus framework to onboard new channel in the MCO project.",
@@ -28,6 +29,7 @@
                 {
                     "title": "Quarkus Migration",
                     "role": "Java Developer",
+                    "projectSkills":"JAVA | QUARKUS3",
                     "details": [
                         "Independently managed the migration of our services from Quarkus 2 to Quarkus 3 within one sprint..",
                         "Gracefully handled the major impact of Hibernate-ORM during this migration by following the migration guide.",
@@ -50,6 +52,7 @@
                 {
                     "title": "Citi Ventures",
                     "role": "AVP",
+                    "projectSkills":"JAVA | REST | SpringBoot | React | TypeScript | PostgreSQL",
                     "details": [
                         "Migrated Angular application to React 16.",
                         "Integrated Memcached distributed caching systems.",
@@ -72,6 +75,7 @@
                 {
                     "title": "Alternative Investment services",
                     "role": "Module Lead",
+                    "projectSkills":"JAVA | REST | Spring MVC | Angular | Oracle",
                     "details": [
                         "Worked on enterprise applications.",
                         "Enhanced user interfaces.",
@@ -92,6 +96,7 @@
                 {
                     "title": "COX & Communication",
                     "role": "Team Lead",
+                    "projectSkills":"JAVA | REST | Spring MVC | Angular | Oracle | JBoss",
                     "details": [
                         "Designed and developed the application using spring boot, spring data, oracle, Angular 2 framework along with HTML5, CSS3, Type Script, Java Script, Bootstrap, PrimeNG",
                         "Enhanced user interfaces.",
@@ -101,6 +106,7 @@
                 },
                 {
                     "title": "E-Licensing System Implementation, Massachusett",
+                    "projectSkills":"JavaScript | Accela Tool",
                     "role": "Senior Software Engineer(Accela developer)",
                     "details": [
                         "Designed and developed a Portal (KRDH) for the State of Karnataka to provide a resident data hub for the state citizens. It was designed to provide all the latest news and schemes introduced by the State Government. Feature implementations done on UI front for module demos.",

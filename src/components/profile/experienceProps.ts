@@ -1,6 +1,7 @@
 interface Project {
     title: string;
     role: string;
+    projectSkills?:string;
     details: string[];
 }
 

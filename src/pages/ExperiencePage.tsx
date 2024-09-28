@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { makeStyles, Paper, Typography, Avatar as MuiAvatar, withStyles, Card, CardContent, useTheme, useMediaQuery } from '@material-ui/core';
+import { makeStyles, Paper, Typography, Avatar as MuiAvatar, withStyles, Card, CardContent, useTheme, useMediaQuery, Divider } from '@material-ui/core';
 import Timeline from '@material-ui/lab/Timeline';
 import TimelineItem from '@material-ui/lab/TimelineItem';
 import TimelineSeparator from '@material-ui/lab/TimelineSeparator';
@@ -11,6 +11,7 @@ import { relative } from 'path';
 import { apiGet } from '../api/apiService';
 import { API_PATH } from '../api/apiConstants';
 import { Experience } from '../components/profile/experienceProps';
+import { fontWeight } from 'html2canvas/dist/types/css/property-descriptors/font-weight';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -90,13 +91,28 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '0.9rem', // Smaller font size for entitle
         color: theme.palette.text.secondary, // Distinguish entitle from the company name
     },
-    durationBold: {
+    bold: {
         fontWeight: 'bold',
     },
     timeLineConnector: {
         width: 1,
         background: theme.palette.grey[400],
     },
+    projectTitle: {
+        color: theme.palette.text.primary,
+        fontWeight: 600
+    },
+    projectSkills:{
+       
+    },
+    detailList:{
+       /*  marginTop:'10px', */
+        marginLeft: '-20px',
+    },
+    detailListItem: {
+        lineHeight:'2.2rem'
+    },
+
 
 }));
 
@@ -121,7 +137,7 @@ export default function ExperienceTimeline() {
     const [experiences, setExperienceData] = useState<Experience[]>([]);
 
     useEffect(() => {
-        const fetchSkills = async () => {
+        const fetchExperience = async () => {
             try {
                 const response = await apiGet<Experience[]>(API_PATH.get.experienceUrl);
                 setExperienceData(response);
@@ -130,7 +146,7 @@ export default function ExperienceTimeline() {
                 console.error('Error fetching data:', error);
             }
         }
-        fetchSkills();
+        fetchExperience();
     }, [])
 
     return (
@@ -141,7 +157,7 @@ export default function ExperienceTimeline() {
                         <TimelineItem key={index} className={classes.timelineItem}>
                             <TimelineSeparator>
                                 {/* Company logo inside TimelineDot */}
-                                <Typography variant="overline" className={classes.durationBold} color="textSecondary">
+                                <Typography variant="overline" className={classes.bold} color="textSecondary">
                                     {initialsOfDuration(experience.duration)}
                                 </Typography>
                                 {/* <TimelineDot className={classes.timelineDot} color='secondary'>
@@ -212,20 +228,27 @@ export default function ExperienceTimeline() {
 
                                     </Typography>
 
-
+                                    <Divider/>
 
                                     {experience.projects.map((project, projectIndex) => (
+                                    
                                         <div key={projectIndex} style={{ marginTop: '8px' }}>
-                                            <Typography variant="subtitle1" >
-                                                {project.title} - {project.role}
+                                            <Typography variant="subtitle1" className={classes.projectTitle} >
+                                                <span >Project</span>: {project.title}
                                             </Typography>
+                                            <Typography variant='caption' className={classes.projectSkills} >
+                                                {project.projectSkills}
+                                            </Typography>
+                                          <div className={classes.detailList}>
+                                           
                                             <ul>
                                                 {project.details.map((detail, detailIndex) => (
-                                                    <li key={detailIndex}>
+                                                    <li key={detailIndex} className={classes.detailListItem}>
                                                         <Typography variant="body2">{detail}</Typography>
                                                     </li>
                                                 ))}
                                             </ul>
+                                            </div> 
                                         </div>
                                     ))}
                                 </Paper>

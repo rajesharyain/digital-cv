@@ -65,7 +65,6 @@ const request = async <T>(
 // Generic response handler
 const handleResponse = <T>(response: AxiosResponse<T>): T => {
   // You can add any custom logic to handle successful responses here
-  console.log('API Response:', response);
   return response.data;
 };
 
