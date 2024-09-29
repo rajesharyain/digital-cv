@@ -1,9 +1,9 @@
 import React from 'react';
-import { makeStyles, Paper, Typography, Avatar as MuiAvatar, withStyles, Button, useMediaQuery, useTheme } from '@material-ui/core';
+import { makeStyles, Paper, Typography, Avatar as MuiAvatar, withStyles, Button, useMediaQuery, useTheme, Divider } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import { Experience } from '../components/profile/experienceProps';
 
-// Use the same experiences data from your main component
-const currentExperience = {
+/* const currentExperience: Experience = {
   companyName: 'Aubay | Critical TechWorks.',
   duration: '01/2024 - Present',
   entitle: 'Senior Consultant',
@@ -39,16 +39,16 @@ const currentExperience = {
       ],
     },
   ],
-};
+}; */
 
-// Styles
 const useStyles = makeStyles((theme) => ({
   paper: {
-   /*  padding: '16px', */
-   /*  marginTop: theme.spacing(2), */
     marginBottom: theme.spacing(2),
     position: 'relative',
   
+  },
+  mainContainer:{
+    marginTop: '8px',
   },
   companyLogo: {
     maxWidth: 200,
@@ -70,6 +70,9 @@ const useStyles = makeStyles((theme) => ({
   companyName: {
     fontWeight: 'bold',
   },
+  projectTitle:{
+    fontWeight: 'bold',
+  },
   entitle: {
     fontSize: '0.9rem',
     color: theme.palette.text.secondary,
@@ -79,7 +82,11 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
   },
   currentActivity:{
-    lineHeight: '2.5rem'
+    marginLeft: '-20px',
+    marginTop: '5px'
+  },
+  currentActivityItem:{
+    lineHeight: '2.2rem'
   },
 }));
 
@@ -92,7 +99,8 @@ const CustomAvatar = withStyles({
   },
 })(MuiAvatar);
 
-export default function CurrentActivity() {
+//export default function CurrentActivity() {
+const CurrentActivity: React.FC<Experience> = ({...currentExperience}) => {
   const classes = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -121,41 +129,50 @@ export default function CurrentActivity() {
 
 {/* <Typography variant="h6"> Current Organazation</Typography> */}
    
-      
+   {
+    currentExperience && (
+      <>
       <Typography variant="h6" component="h1" className={classes.companyName}>
         {currentExperience.companyName}
       </Typography>
 
       <Typography variant="subtitle1" className={classes.entitle}>
         {currentExperience.entitle} - {currentExperience.location}
-      </Typography>
+      </Typography>  
+         <Divider></Divider>              
+      </>
 
+    )
+
+   }
+      
+      
+      
       {/* List of projects */}
-      {currentExperience.projects.map((project, projectIndex) => (
-        <div key={projectIndex} style={{ marginTop: '16px' }}>
+      {currentExperience && currentExperience.projects && currentExperience.projects.map((project, projectIndex) => (
+        <div key={projectIndex} className={classes.mainContainer}>
+         
           <Typography variant="subtitle1">
-            {project.title} - {project.role}
+            <span>Project</span>: {project.title}
           </Typography>
+
+          <Typography variant='caption' >
+              {project.projectSkills}
+          </Typography>
+
+
           <ul className={classes.currentActivity}>
             {project.details.map((detail, detailIndex) => (
-              <li key={detailIndex}>
+              <li key={detailIndex} className={classes.currentActivityItem}>
                 <Typography variant="body2">{detail}</Typography>
               </li>
             ))}
           </ul>
         </div>
       ))}
-      {/* <div className={classes.viewAllButton}>
-        <Button
-          variant="contained"
-          color="primary"
-          component={Link} 
-          to="/experience"
-        >
-          View All
-        </Button>
-      </div> */}
+      
     </div>
   );
 }
+export default CurrentActivity;
 

@@ -3,11 +3,7 @@ import React from 'react';
 import { Card, CardContent, Typography, Link, Grid, Avatar, Divider, TableCell, TableRow, TableBody, Table, TableContainer, Paper, List, ListItemIcon, ListItem, ListItemText, CardActionArea, CardActions, Button } from '@material-ui/core';
 import { GitHub, LinkedIn, Email, Phone, EmailOutlined, PhoneOutlined, LocationOnOutlined } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
-import Achievements from './Achievements';
-import VideoProfile from './VideoProfile';
-import GitHubMetrics from '../github/GitHubMetrics';
-import HireMeButton from '../services/HireMeButton';
-import AvatarCard from './AvatarCard';
+
 
 interface ProfileProps {
     name: string;
@@ -39,8 +35,10 @@ const useStyles = makeStyles((theme) => ({
         flex: 2,
     },
     avatar: {
-        width: theme.spacing(25),
-        height: theme.spacing(25),
+       /*  width: theme.spacing(25),
+        height: theme.spacing(25), */
+        width: '80%',
+        height: '80%',
         margin: 'auto',
     },
     name: {
@@ -77,6 +75,7 @@ const ProfileLeftGrid: React.FC<ProfileProps> = ({ name, avatarUrl, githubAvatar
     const classes = useStyles();
     const profileAvatarUrl = githubAvatarUrl || avatarUrl || 'https://via.placeholder.com/150';
 
+  
     return (
         <Card className={classes.root} elevation={0}>
             <CardContent >

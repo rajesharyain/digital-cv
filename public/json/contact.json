@@ -1,0 +1,18 @@
+{
+    "data": 
+        {
+            "name": "Rajesh Kumar",
+            "email": "rkumar.arya@yahoo.com",
+            "contactNbr": "+351 936522007",
+            "location": "Lisbon, Portugal",
+            "workPreference" : [
+                "Remote Work",
+                "Europe",
+                "United Kingdom",
+                "USA",
+                "UAE"
+            ],
+            "hourlyCharges": "$25-$40/hour"
+        }
+    
+}
