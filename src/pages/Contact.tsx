@@ -83,11 +83,11 @@ const Contact: React.FC = () => {
              
             ))}
              </List>
-             {contact && contact.hourlyCharges &&
+             {/*contact && contact.hourlyCharges &&
               <Typography variant="button" >
                 <span className={classes.bold}>Hourly Charges:</span> {contact.hourlyCharges}
               </Typography>
-             }
+            */ }
             {/* <Typography variant="body1">$50/hour</Typography> */}
           </Paper>
         </Grid>
