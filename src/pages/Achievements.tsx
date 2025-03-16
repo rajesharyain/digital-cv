@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card, CardContent, Typography, Grid } from '@material-ui/core';
+import { Card, CardContent, Typography, Grid , Avatar, Link} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { apiGet } from '../api/apiService';
 import { API_PATH } from '../api/apiConstants';
@@ -74,14 +74,8 @@ const Achievements: React.FC = () => {
               </Typography>
             </CardContent>
           </Card>
- <Card className={classes.card} >
-            <CardContent>
-              <Typography variant="h6" className={classes.bold}>
-                AWS
-               </Typography>
-          <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="806d3708-1779-45ee-9e33-e922eace6153" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
-            </CardContent>
-         </Card>
+ 
+         
             </div>
       ))}
       {/* <Grid item xs={12}>
@@ -103,6 +97,24 @@ const Achievements: React.FC = () => {
        
       </Grid> */}
 
+<Grid item xs={12}>
+    
+        <Card className={classes.card} >
+       
+          <CardContent>
+          <Typography variant="h6" className={classes.bold}>
+                AWS
+          </Typography>
+          <Link href="https://www.credly.com/badges/806d3708-1779-45ee-9e33-e922eace6153/public_url">
+            <img src="badges/aws-educate-introduction-to-cloud-101.png" alt="AWS Educate Cloud 101" width={150} />
+          </Link>
+          </CardContent>
+        </Card>
+      
+    </Grid>
+      
+     
+      
     </div>
   );
 };
